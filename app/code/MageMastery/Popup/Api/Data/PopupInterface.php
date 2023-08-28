@@ -4,6 +4,9 @@ namespace MageMastery\Popup\Api\Data;
 
 interface PopupInterface
 {
+    public const STATUS_DISABLED = 0;
+    public const STATUS_ENABLED = 1;
+
     public function getPopupId(): int;
     public function setPopupId(int $popupId);
     public function getName(): string;
@@ -15,7 +18,7 @@ interface PopupInterface
     public function getUpdatedAt(): string;
     public function setUpdatedAt(string $updatedAt);
     public function getIsActive(): bool;
-    public function setIsActive(bool $isActive);
+    public function setIsActive(int $status);
     public function getTimeout(): int;
     public function setTimeout(int $timeout);
 }
