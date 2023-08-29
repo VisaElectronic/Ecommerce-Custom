@@ -26,17 +26,31 @@ class PopupRepository implements PopupRepositoryInterface
      *
      * @param PopupInterface $popup
      * @return void
+     * @throws AlreadyExistsException
      */
     public function save(PopupInterface $popup): void
     {
         $this->resource->save($popup);
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param PopupInterface $popup
+     * @return void
+     */
     public function delete(PopupInterface $popup): void
     {
         $this->resource->delete($popup);
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param integer $popupId
+     * @return PopupInterface
+     * @throws NoSuchEntityException
+     */
     public function getById(int $popupId): PopupInterface
     {
         $popup = $this->factory->create();

@@ -3,7 +3,7 @@
  * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-namespace MageMastery\Popup\Ui\Component\Popup;
+namespace MageMastery\Popup\Ui\Popup;
 
 use MageMastery\Popup\Model\ResourceModel\Popup\CollectionFactory;
 use MageMastery\Popup\Model\ResourceModel\Popup\Collection;
@@ -64,7 +64,7 @@ class DataProvider extends \Magento\Ui\DataProvider\ModifierPoolDataProvider
      */
     public function getData(): array
     {
-        if (isset($this->loadedData)) {
+        if (!empty($this->loadedData)) {
             return $this->loadedData;
         }
         $items = $this->collection->getItems();
@@ -73,12 +73,12 @@ class DataProvider extends \Magento\Ui\DataProvider\ModifierPoolDataProvider
             $this->loadedData[$block->getId()] = $block->getData();
         }
 
-        // $data = $this->dataPersistor->get('magemastery_popup_popup');
+        $data = $this->dataPersistor->get('magemastery_popup_popup');
         if (!empty($data)) {
             $popup = $this->collection->getNewEmptyItem();
             $popup->setData($data);
             $this->loadedData[$popup->getId()] = $popup->getData();
-            // $this->dataPersistor->clear('magemastery_popup_popup');
+            $this->dataPersistor->clear('magemastery_popup_popup');
         }
 
         return $this->loadedData;

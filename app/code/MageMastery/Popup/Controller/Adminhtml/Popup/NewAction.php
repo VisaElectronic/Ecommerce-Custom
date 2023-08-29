@@ -9,8 +9,6 @@ use Magento\Framework\View\Result\Page;
 
 class NewAction extends Action
 {
-    
-
     public function execute(): ResultInterface
     {
         return $this->resultFactory->create(ResultFactory::TYPE_FORWARD)->forward('edit');

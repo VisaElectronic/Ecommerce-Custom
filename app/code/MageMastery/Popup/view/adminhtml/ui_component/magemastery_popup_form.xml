@@ -15,9 +15,9 @@
     </argument>
     <settings>
         <buttons>
-            <button name="save" class="Magento\Cms\Block\Adminhtml\Block\Edit\SaveButton"/>
-            <button name="delete" class="Magento\Cms\Block\Adminhtml\Block\Edit\DeleteButton"/>
-            <button name="back" class="Magento\Cms\Block\Adminhtml\Block\Edit\BackButton"/>
+            <button name="save" class="MageMastery\Popup\Block\Adminhtml\Popup\Edit\SaveButton"/>
+            <button name="delete" class="MageMastery\Popup\Block\Adminhtml\Popup\Edit\DeleteButton"/>
+            <button name="back" class="MageMastery\Popup\Block\Adminhtml\Popup\Edit\BackButton"/>
         </buttons>
         <namespace>magemastery_popup_form</namespace>
         <dataScope>data</dataScope>
@@ -34,7 +34,7 @@
         <settings>
             <submitUrl path="magemastery_popup/popup/save"/>
         </settings>
-        <dataProvider class="MageMastery\Popup\Ui\Component\Popup\DataProvider" name="magemastery_popup_form_data_source">
+        <dataProvider class="MageMastery\Popup\Ui\Popup\DataProvider" name="magemastery_popup_form_data_source">
             <settings>
                 <requestFieldName>popup_id</requestFieldName>
                 <primaryFieldName>popup_id</primaryFieldName>
@@ -96,7 +96,22 @@
                 <dataScope>name</dataScope>
             </settings>
         </field>
-        <field name="content" formElement="wysiwyg">
+        <field name="timeout" sortOrder="30" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">popup</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Popup Timeout</label>
+                <dataScope>timeout</dataScope>
+            </settings>
+        </field>
+        <field name="content" sortOrder="40" formElement="wysiwyg">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">popup</item>
@@ -116,21 +131,6 @@
                     </settings>
                 </wysiwyg>
             </formElements>
-        </field>
-        <field name="timeout" sortOrder="20" formElement="input">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">popup</item>
-                </item>
-            </argument>
-            <settings>
-                <validation>
-                    <rule name="required-entry" xsi:type="boolean">true</rule>
-                </validation>
-                <dataType>text</dataType>
-                <label translate="true">Popup Timeout</label>
-                <dataScope>timeout</dataScope>
-            </settings>
         </field>
     </fieldset>
 </form>
